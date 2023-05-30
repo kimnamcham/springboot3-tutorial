@@ -62,6 +62,7 @@ public class BeerServiceImpl implements BeerService {
         beerMap.put(beer1.getId(), beer1);
         beerMap.put(beer2.getId(), beer2);
         beerMap.put(beer3.getId(), beer3);
+
     }
 
     @Override
@@ -71,8 +72,7 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public Beer getBeerById(UUID id) {
-        log.debug("Get Beer by Id - in service. Id: " + id.toString());
-
+        log.info("Get Beer by Id - in service. Id: " + id.toString());
         return beerMap.get(id);
     }
 
@@ -113,7 +113,7 @@ public class BeerServiceImpl implements BeerService {
     public void patchBeerById(UUID beerId, Beer beer) {
         Beer existing = beerMap.get(beerId);
 
-        if (StringUtils.hasText(beer.getBeerName())){
+        if (StringUtils.hasText(beer.getBeerName())) {
             existing.setBeerName(beer.getBeerName());
         }
 
@@ -125,7 +125,7 @@ public class BeerServiceImpl implements BeerService {
             existing.setPrice(beer.getPrice());
         }
 
-        if (beer.getQuantityOnHand() != null){
+        if (beer.getQuantityOnHand() != null) {
             existing.setQuantityOnHand(beer.getQuantityOnHand());
         }
 
